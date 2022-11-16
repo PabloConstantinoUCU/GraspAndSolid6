@@ -15,7 +15,14 @@ namespace Full_GRASP_And_SOLID
         private IList<BaseStep> steps = new List<BaseStep>();
 
         public Product FinalProduct { get; set; }
-        public bool Cooked = false;
+        private bool cooked = false;
+        public bool Cooked
+        {
+            get
+            {
+                return this.cooked;
+            }
+        }
 
         // Agregado por Creator
         public void AddStep(Product input, double quantity, Equipment equipment, int time)
@@ -63,12 +70,12 @@ namespace Full_GRASP_And_SOLID
 
         public void SetCooked()
         {
-            this.Cooked = true;
+            this.cooked = true;
         }
 
         public void Cook()
         {
-            if (Cooked == false)
+            if (cooked == false)
             {
                 RecipeClient client = new RecipeClient(this);
                 client.RegisterTimer();
